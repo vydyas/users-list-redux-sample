@@ -1,21 +1,20 @@
-require('normalize.css/normalize.css');
-require('./AppComponent.styl');
+import  'normalize.css/normalize.css'
 
-import React from 'react';
+import React from 'react'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar'
 
 import  greenMuiTheme from './greenMuiTheme'
-import  ProductCardsList from '../ProductCard/ProductCardsList'
+import  UserCardsList from '../UserCardsList'
 
 export default ()=>
-  <MuiThemeProvider muiTheme={greenMuiTheme}>
+  <MuiThemeProvider muiTheme={ greenMuiTheme }>
     <div>
-      <AppBar title="Products Catalogue" showMenuIconButton={false}/>
-      <div className="products-catalogue-container">
-        <h3>Hi! Here is you products list.</h3>
-        <ProductCardsList/>
+      <AppBar title="Users Catalogue" showMenuIconButton={ false } />
+      <div style={ { margin: '8px' } }>
+        <h3>Hi! Here is you users list.</h3>
+        <UserCardsList />
       </div>
     </div>
   </MuiThemeProvider>

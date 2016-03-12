@@ -1,33 +1,28 @@
-function EventEmitter() {
-  this._events = {};
-}
+export default class EventEmitter {
+  _events = {}
 
-EventEmitter.prototype.on = function ( types, listener ) {
-  types = Array.isArray(types) ? types : [ types ]
-  types.forEach(( type ) => {
-    this._events[ type ] = this._events[ type ] || [];
-    this._events[ type ].push(listener);
-  })
-  return this;
-};
-
-EventEmitter.prototype.emit = function ( type ) {
-  if ( this._events[ type ] ) {
-    var args = arguments;
-    this._events[ type ].forEach(function ( listener ) {
-      listener.apply(null, args);
-    });
+  on ( types, listener ) {
+    types = Array.isArray( types ) ? types : [types]
+    types.forEach( type => {
+      this._events[type] = this._events[type] || []
+      this._events[type].push( listener )
+    } )
+    return this
   }
-};
 
-EventEmitter.prototype.removeListener = function ( types, listener ) {
-  types = Array.isArray(types) ? types : [ types ]
-  types.forEach(( type ) => {
-    if ( this._events[ type ] ) {
-      this._events[ type ].splice(this._events[ type ].indexOf(listener), 1);
+  emit ( type ) {
+    if ( this._events[type] ) {
+      const args = arguments
+      this._events[type].forEach( listener => listener.apply( null, args ) )
     }
-    return this;
-  })
-};
+  }
 
-export default EventEmitter;
+  removeListener ( types, listener ) {
+    ( Array.isArray( types ) ? types : [types] ).forEach( type => {
+      if ( this._events[type] ) {
+        this._events[type].splice( this._events[type].indexOf( listener ), 1 )
+      }
+      return this
+    } )
+  }
+}

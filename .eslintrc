@@ -22,7 +22,7 @@
     "arrow-parens": ["error", "as-needed"],
     "space-before-function-paren": ["error", "always"],
     "semi": ["error", "never"],
-    "space-in-parens": ["error", "never", {"exceptions": ["empty"]}],
+    "space-in-parens": ["error", "always", {"exceptions": ["empty"]}],
     "prefer-const": ["error"],
 
     "react/jsx-uses-react": "error",
