@@ -1,16 +1,16 @@
-import createComponent from '../../../test-resources/shallowRender.helper';
-import AppComponent from './AppComponent';
+import createComponent from '../../../test-resources/shallowRender.helper'
+import AppComponent from './AppComponent'
 
-describe('AppComponent', () => {
-  let appComponent;
+describe('AppComponent', ( ) => {
+  let appComponent
 
-  beforeEach(() => {
+  beforeEach(( ) => {
     // yes I'm not mocking http call, sorry for this
-    appComponent = createComponent(AppComponent);
-  });
+    appComponent = createComponent(AppComponent)
+  })
 
-  it('should create a component', () => {
-    expect(appComponent).toBeTruthy();
-  });
-});
+  it('should create a component', ( ) => {
+    expect(appComponent).toBeTruthy( )
+  })
+})
 

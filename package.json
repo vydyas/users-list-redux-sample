@@ -10,7 +10,7 @@
     "serve:dist": "node webpack.server.js --env=dist",
     "test": "karma start test-resources/karma.conf.js",
     "test:watch": "karma start test-resources/karma.conf.js --autoWatch=true --singleRun=false",
-    "eslint:fix": "eslint ./src --fix",
+    "eslint:fix": "eslint ./src ./test-resources --fix",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
     "clean": "rimraf dist/*",
     "postinstall": "selenium-standalone install"
@@ -30,7 +30,6 @@
     "cucumber": "^1.2.1",
     "eslint": "^2.2.0",
     "eslint-loader": "^1.0.0",
-    "eslint-plugin-react": "^5.0.0",
     "file-loader": "^0.8.4",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-reporters": "^2.0.7",
@@ -58,6 +57,7 @@
     "webpack": "^1.12.0",
     "webpack-dev-server": "^1.12.0",
     "core-js": "^2.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "glob": "^7.0.0"
   },
   "dependencies": {

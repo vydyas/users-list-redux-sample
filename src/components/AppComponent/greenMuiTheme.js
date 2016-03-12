@@ -1,5 +1,5 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { green100, green500, green700 } from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import { green100, green500, green700 } from 'material-ui/styles/colors'
 
 export default getMuiTheme({
   palette: {
@@ -9,4 +9,4 @@ export default getMuiTheme({
   }
 }, {
   avatar: { borderColor: null }
-});
+})

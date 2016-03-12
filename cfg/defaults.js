@@ -5,11 +5,11 @@ module.exports = {
   port: 8000,
   getDefaultModules: function () {
     return {
-      preLoaders: [ {
-        test: /\.(js|jsx)$/,
-        include: srcPath,
-        loader: 'eslint-loader'
-      } ],
+      // preLoaders: [ {
+      //   test: /\.(js|jsx)$/,
+      //   include: srcPath,
+      //   loader: 'eslint-loader'
+      // } ],
       loaders: [
         { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
         { test: /\.styl/, loader: 'style-loader!css-loader!postcss-loader!stylus-loader' },

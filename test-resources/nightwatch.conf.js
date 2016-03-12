@@ -2,7 +2,7 @@
 
 var nightwatchCucumber = require('nightwatch-cucumber')({
   /* configuration */
-});
+})
 
 module.exports = {
   // "src_folders": [ "test-resources/e2e" ],
@@ -19,4 +19,4 @@ module.exports = {
   "test_settings": {
     "default": { "desiredCapabilities": { "browserName": "chrome" } }
   }
-};
+}

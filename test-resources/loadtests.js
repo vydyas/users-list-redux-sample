@@ -1,5 +1,5 @@
-require('babel-polyfill');
-require('core-js/fn/object/assign');
+require('babel-polyfill')
+require('core-js/fn/object/assign')
 
-const testsContext = require.context('../src', true, /(spec\.js$)/);
-testsContext.keys().forEach(testsContext);
+const testsContext = require.context('../src', true, /(spec\.js$)/)
+testsContext.keys( ).forEach(testsContext)
