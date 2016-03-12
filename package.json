@@ -1,7 +1,7 @@
 {
   "name": "productCatalogue",
   "private": true,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "UI of Products Catalogue project, based on ReactJS",
   "scripts": {
     "nightwatch": "nightwatch --config=test-resources/nightwatch.conf.js",
@@ -10,15 +10,13 @@
     "serve:dist": "node webpack.server.js --env=dist",
     "test": "karma start test-resources/karma.conf.js",
     "test:watch": "karma start test-resources/karma.conf.js --autoWatch=true --singleRun=false",
-    "posttest": "npm run lint",
-    "lint": "eslint ./src",
+    "eslint:fix": "eslint ./src --fix",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
     "clean": "rimraf dist/*",
     "postinstall": "selenium-standalone install"
   },
-  "author": "Your name here",
+  "author": "Vladimir Shein <vladimir.sonnenhaft@gmail.com>",
   "devDependencies": {
-    "axios": "^0.14.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -34,9 +32,6 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^5.0.0",
     "file-loader": "^0.8.4",
-    "flux": "^2.1.1",
-    "flux-react": "^3.0.0",
-    "glob": "^7.0.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine-reporters": "^2.0.7",
     "karma": "^0.13.9",
@@ -45,20 +40,15 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
-    "material-ui": "^0.15.2",
     "minimist": "^1.2.0",
     "nib": "~1.0.4",
     "nightwatch": "^0.9.5",
     "nightwatch-cucumber": "^4.0.0",
     "null-loader": "^0.1.1",
-    "object-assign": "^4.1.0",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
     "postcss": "^5.0.11",
     "postcss-loader": "^0.8.0",
-    "react-addons-test-utils": "^15.0.0",
-    "react-hot-loader": "^1.2.9",
-    "react-tap-event-plugin": "^1.0.0",
     "rimraf": "^2.4.3",
     "selenium-standalone": "^5.5.0",
     "style-loader": "^0.13.0",
@@ -66,12 +56,20 @@
     "stylus-loader": "^0.5.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",
-    "webpack-dev-server": "^1.12.0"
+    "webpack-dev-server": "^1.12.0",
+    "core-js": "^2.0.0",
+    "glob": "^7.0.0"
   },
   "dependencies": {
-    "core-js": "^2.0.0",
+    "axios": "^0.14.0",
+    "flux": "^2.1.1",
+    "flux-react": "^3.0.0",
+    "material-ui": "^0.17.0",
     "normalize.css": "^4.0.0",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-hot-loader": "^1.2.9",
+    "react-tap-event-plugin": "^2.0.1"
   }
 }
