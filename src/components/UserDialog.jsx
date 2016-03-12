@@ -2,38 +2,20 @@ import React from 'react'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import TextInput from './TextInput'
-import { UserListStore, UserListConstants } from './flux/UserListStore'
 import ProgressBar from './ProgressBar'
 
 export default class DialogExampleDialogDatePicker extends React.Component {
   constructor ( props ) {
     super( props )
-    this.state = {
-      updating: false,
-      open: props.open || false,
-      user: { ...( props.user || {} ) }
+    this.isCreate = !props.user
+    this.state = { updating: false, user: {} }
+  }
+
+  componentWillUpdate ( { open, user = {} } ) {
+    if ( open && this.props.open !== open ) {
+      this.setState( { updating: false, user: { ... user } } )
     }
   }
-
-  closePopupListener = () => this.setState( { open: false, updating: false } )
-
-  componentDidMount () {
-    UserListStore.on( [
-      UserListConstants.USER_ADDED,
-      UserListConstants.USER_UPDATED
-    ], this.closePopupListener )
-  }
-
-  componentWillUnmount () {
-    UserListStore.removeListener( [
-      UserListConstants.USER_ADDED,
-      UserListConstants.USER_UPDATED
-    ], this.closePopupListener )
-  }
-
-  handleOpen = () => {
-    this.setState( { open: true } )
-  };
 
   handleOk = () => {
     this.setState( { updating: true } )
@@ -47,7 +29,8 @@ export default class DialogExampleDialogDatePicker extends React.Component {
   };
 
   ChangableInput = ( { label, field, type } ) => {
-    return <TextInput  { ...{ label, type } } value={ this.state.user[field] } onChange={ this.changeUserProperty( field ) } />
+    return <TextInput  { ...{ label, type } } value={ this.state.user[field] }
+                       onChange={ this.changeUserProperty( field ) } />
   }
 
   render () {
@@ -58,7 +41,7 @@ export default class DialogExampleDialogDatePicker extends React.Component {
                   primary={ true }
                   style={ progressStyle }
                   keyboardFocused={ true }
-                  onTouchTap={ this.closePopupListener } />,
+                  onTouchTap={ this.props.handleClose } />,
       <FlatButton label="Ok" key="ok"
                   className="e2e-ok-button"
                   primary={ true }
@@ -68,19 +51,17 @@ export default class DialogExampleDialogDatePicker extends React.Component {
     const user = this.state.user
     const { first_name = '', last_name = '' } = user
     let title = 'New user:'
-    if ( first_name || last_name ) {
-      title = `Update user with name: "${first_name} ${last_name}"`
+    if ( !this.isCreate ) {
+      title = `Update user with name: "${first_name || ''} ${last_name || ''}"`
     }
+    const open = !!this.props.open
 
     const ChangableInput = this.ChangableInput
 
     return (
       <span>
-        <span onTouchTap={ this.handleOpen }>{this.props.children}</span>
-        <Dialog modal={ false } open={ this.state.open } onRequestClose={ this.closePopupListener } { ...{
-          title,
-          actions
-        } }>
+        <span onTouchTap={ this.props.handleOpen }>{this.props.children}</span>
+        <Dialog  { ...{ title, actions, open, modal: false } }>
           <div style={ { display: 'flex' } }>
             <ChangableInput { ...{ label: 'Email', field: 'email', type: 'email' } } />
             <div style={ { width: '32px' } } />

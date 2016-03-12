@@ -1,22 +1,20 @@
 import React from 'react'
-import Snackbar from 'material-ui/Snackbar'
-import { UserListStore, UserListConstants } from './flux/UserListStore'
+import { connect } from 'react-redux'
 
-export default class extends React.Component {
+import Snackbar from 'material-ui/Snackbar'
+
+class NotificationBar extends React.Component {
   state = { tooltipMessage: false }
 
-  constructor ( props ) {
-    super( props )
-    UserListStore.on( UserListConstants.USER_ADDED, ( e, user )=> {
-      this.setState( { tooltipMessage: `User "${user.name}" added!'` } )
-    } ).on( UserListConstants.USER_REMOVED, user=> {
-      this.setState( { tooltipMessage: `Removed user "${user.name}"!` } )
-    } ).on( UserListConstants.USER_UPDATED, ( e, user )=> {
-      this.setState( { tooltipMessage: `User updated to "${user.name}"!` } )
-    } )
+  componentWillUpdate ( { lastAction } ) {
+    if ( this.props.lastAction !== lastAction ) {
+      this.setState( { tooltipMessage: lastAction || false } )
+    }
   }
 
-  handleRequestClose = () => {this.setState( { tooltipMessage: false } )};
+  handleRequestClose = () => {
+    this.setState( { tooltipMessage: false } )
+  };
 
   render () {
     return <Snackbar
@@ -27,4 +25,8 @@ export default class extends React.Component {
       onRequestClose={ this.handleRequestClose } />
   }
 }
+
+export default connect(
+  ( { user: { lastAction } } ) => ( { lastAction, } ),
+)( NotificationBar )
 
