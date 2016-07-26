@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import UpdateProductDialog from './UpdateProductDialog';
+import ProductDialog from './ProductDialog';
 import ProgressBar from '../ProgressBar';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -48,12 +48,12 @@ export default class extends React.Component {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
         <CardActions style={{textAlign: 'right'}}>
-          <FlatButton label="Delete" onTouchTap={this.remove} 
-                      className={'e2e-remove-' + product.name}/>
-          <UpdateProductDialog onUpdate={this.updateByDialog} product={ product }>
+          <FlatButton label="Delete" onTouchTap={this.remove}
+                      className={`e2e-remove-${product.name}`}/>
+          <ProductDialog onUpdate={this.updateByDialog} product={ product }>
             <RaisedButton label="Update" primary={true}
-                          className={'e2e-update-' + product.name}/>
-          </UpdateProductDialog>
+                          className={`e2e-update-${product.name}`}/>
+          </ProductDialog>
         </CardActions>
         <ProgressBar show={this.state.updating }/>
       </Card>

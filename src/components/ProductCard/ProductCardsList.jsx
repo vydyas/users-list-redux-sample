@@ -3,14 +3,14 @@ import  ProductCard from './ProductCard'
 import axios from 'axios';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import UpdateProductDialog from './UpdateProductDialog';
+import ProductDialog from './ProductDialog';
 import Snackbar from 'material-ui/Snackbar';
 
 function getApiUrl( id ) {
-  return 'https://api.mongolab.com/api/1/databases/products-catalogue/' +
-    'collections/products' +
-    (id ? '/' + id : '') +
-    '?apiKey=PGjxbP3NQzS2xXIe8PgSbJBxVzaPlXGe';
+  const apiKey = 'PGjxbP3NQzS2xXIe8PgSbJBxVzaPlXGe';
+  const db = 'products-catalogue';
+  const collection = 'products';
+  return `https://api.mongolab.com/api/1/databases/${db}/collections/${collection}${id ? '/' + id : ''}?apiKey=${apiKey}`;
 }
 
 export default class extends React.Component {
@@ -34,13 +34,13 @@ export default class extends React.Component {
       name: product.name,
       value: product.value
     }).then(this.getList).then(()=> {
-      this.setState({ tooltipMessage: 'Product "' + product.name + '" added!' });
+      this.setState({ tooltipMessage: `Product "${product.name}" added!'` });
     });
   };
 
   remove = ( product ) => {
     return axios.delete(getApiUrl(product.id)).then(this.getList).then(()=> {
-      this.setState({ tooltipMessage: 'Product "' + product.name +'" removed!' });
+      this.setState({ tooltipMessage: `Product "${product.name}" removed!'` });
     });
   };
 
@@ -48,8 +48,8 @@ export default class extends React.Component {
     return axios.put(getApiUrl(product.id), {
       name: product.name,
       value: product.value
-    }).then(()=>{
-      this.setState({ tooltipMessage: 'Product updated to"' + product.name + '"!' });
+    }).then(()=> {
+      this.setState({ tooltipMessage: `Product updated to "${product.name}"!` });
     }).then(this.getList);
   };
 
@@ -65,7 +65,7 @@ export default class extends React.Component {
           className="e2e-message"
           onRequestClose={this.handleRequestClose}
         />
-        <UpdateProductDialog label="Create" onUpdate={this.add} product={ {name: 'product x', value: 'product y'} }>
+        <ProductDialog label="Create" onUpdate={this.add} product={ {name: 'product x', value: 'product y'} }>
           <FloatingActionButton
             className="e2e-add-product"
             title="Add new product"
@@ -73,7 +73,7 @@ export default class extends React.Component {
             style={{float: 'right', marginTop: '-53px'}}>
             <ContentAdd />
           </FloatingActionButton>
-        </UpdateProductDialog>
+        </ProductDialog>
         {products.map(( product ) =>
           <ProductCard key={product.id} card={product}
                        onRemove={this.remove}

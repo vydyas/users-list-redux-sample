@@ -52,7 +52,7 @@ export default class DialogExampleDialogDatePicker extends React.Component {
       <span>
         <span onTouchTap={this.handleOpen}>{this.props.children}</span>
         <Dialog
-          title={'Update product with name: "' + product.name + '"'}
+          title={`Update product with name: "${product.name}"`}
           actions={actions}
           modal={false}
           open={this.state.open}
