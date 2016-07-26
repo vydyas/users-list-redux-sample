@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import UpdateProductDialog from './UpdateProductDialog';
-import LinearProgress from 'material-ui/LinearProgress';
+import ProgressBar from '../ProgressBar';
 import FlatButton from 'material-ui/FlatButton';
 
 export default class extends React.Component {
   constructor( props ) {
     super(props);
-    this.state = { expanded: false, updating: false };
+    this.state = { expanded: false, updating: false, product: props.card || {} };
   }
 
   handleExpandChange = ( expanded ) => {
@@ -16,19 +16,17 @@ export default class extends React.Component {
 
   remove = () => {
     this.setState({ updating: true });
-    this.props.onRemove(this.props.card);
+    this.props.onRemove(this.state.product);
   };
 
-  update() {
-    this.setState({ updating: true });
-    return this.props.onUpdate(this.props.card).then((function () {
-      this.setState({ updating: false });
-    }).bind(this));
-  }
+  updateByDialog = ( product ) => {
+    return this.props.onUpdate(product).then(()=> {
+      this.setState({ product: product });
+    });
+  };
 
   render() {
-    var product = this.props.card;
-    var progressStyle = { display: this.state.updating ? 'block' : 'none' };
+    var product = this.state.product;
     return (
       <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}
             style={{ marginBottom: '10px' }}>
@@ -41,7 +39,7 @@ export default class extends React.Component {
         <CardMedia>
           <img src={product.picture}/>
         </CardMedia>
-        <CardTitle title="Card title" subtitle="Card subtitle" expandable={true}/>
+        <CardTitle title="Lorem ipsum" subtitle="Donec mattis" expandable={true}/>
         <CardText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
@@ -50,9 +48,9 @@ export default class extends React.Component {
         </CardText>
         <CardActions style={{textAlign: 'right'}}>
           <FlatButton label="Delete" onTouchTap={this.remove}/>
-          <UpdateProductDialog label="Update" onUpdate={this.update.bind(this)} product={ product }/>
+          <UpdateProductDialog label="Update" onUpdate={this.updateByDialog} product={ product }/>
         </CardActions>
-        <LinearProgress mode="indeterminate" style={progressStyle}/>
+        <ProgressBar show={this.state.updating }/>
       </Card>
     );
   }

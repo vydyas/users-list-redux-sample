@@ -21,10 +21,10 @@ export default class extends React.Component {
   }
 
   getList = () => {
-    return axios.get(getApiUrl()).then((function ( response ) {
+    return axios.get(getApiUrl()).then(( response ) => {
       response.data.forEach(function ( d ) {d.id = d._id.$oid;});
       this.setState({ products: response.data });
-    }).bind(this));
+    });
   };
 
   add = () => {
@@ -34,17 +34,16 @@ export default class extends React.Component {
     }).then(this.getList);
   };
 
-  remove( product ) {
+  remove = ( product ) => {
     return axios.delete(getApiUrl(product.id)).then(this.getList);
-  }
+  };
 
-  update( product ) {
-    console.log(product)
+  update = ( product ) => {
     return axios.put(getApiUrl(product.id), {
       name: product.name,
       value: product.value
     }).then(this.getList);
-  }
+  };
 
   render() {
     var products = this.state.products;
@@ -59,8 +58,8 @@ export default class extends React.Component {
         </FloatingActionButton>
         {products.map(( product ) =>
           <ProductCard key={product.id} card={product}
-                       onRemove={this.remove.bind(this)}
-                       onUpdate={this.update.bind(this)}/>
+                       onRemove={this.remove}
+                       onUpdate={this.update}/>
         )}
       </div>
     );
