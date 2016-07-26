@@ -1,0 +1,8 @@
+{
+  "generator-react-webpack": {
+    "appName": "reactjsProductCatalogueCodingTest",
+    "style": "stylus",
+    "postcss": true,
+    "generatedWithVersion": 3
+  }
+}
