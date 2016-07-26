@@ -21,6 +21,9 @@ export default class extends React.Component {
   handleReduce = () => {
     this.setState({ expanded: false });
   };
+  remove = () => {
+    this.props.remove(this.props.card);
+  };
 
   render() {
     var card = this.props.card;
@@ -28,7 +31,7 @@ export default class extends React.Component {
       <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
         <CardHeader
           title={card.name}
-          subtitle={card.price}
+          subtitle={card.value}
           avatar={card.icon}
           actAsExpander={true}
           showExpandableButton={true}
@@ -54,6 +57,7 @@ export default class extends React.Component {
         <CardActions>
           <FlatButton label="Expand" onTouchTap={this.handleExpand}/>
           <FlatButton label="Reduce" onTouchTap={this.handleReduce}/>
+          <FlatButton label="Remove" onTouchTap={this.remove}/>
         </CardActions>
       </Card>
     );
