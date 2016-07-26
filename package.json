@@ -4,8 +4,9 @@
   "version": "0.0.2",
   "description": "UI of Products Catalogue project, based on ReactJS",
   "scripts": {
-    "serve": "node server.js --env=dev",
-    "serve:dist": "node server.js --env=dist",
+    "nightwatch": "nightwatch --config=test-resources/nightwatch.json",
+    "serve": "node webpack.server.js --env=dev",
+    "serve:dist": "node webpack.server.js --env=dist",
     "test": "karma start test-resources/karma.conf.js",
     "test:watch": "karma start test-resources/karma.conf.js --autoWatch=true --singleRun=false",
     "posttest": "npm run lint",
@@ -13,9 +14,7 @@
     "lint": "eslint ./src",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
     "clean": "rimraf dist/*",
-    "release:major": "npm version major && npm publish && git push --follow-tags",
-    "release:minor": "npm version minor && npm publish && git push --follow-tags",
-    "release:patch": "npm version patch && npm publish && git push --follow-tags"
+    "postinstall": "selenium-standalone install"
   },
   "author": "Your name here",
   "devDependencies": {

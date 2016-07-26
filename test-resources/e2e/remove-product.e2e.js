@@ -9,7 +9,7 @@ module.exports = {
       .click('.e2e-ok-button')
       .waitForElementVisible('.e2e-message', AJAX_DELAY)
       .assert.elementPresent('.e2e-remove-' + randomSuffix)
-      .waitForElementNotVisible('.e2e-message', 2500)
+      .waitForElementNotVisible('.e2e-message', 2000)
       .click('.e2e-remove-' + randomSuffix)
       .waitForElementVisible('.e2e-message', AJAX_DELAY)
       .assert.elementNotPresent('.e2e-remove-' + randomSuffix)

@@ -5,7 +5,6 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import UpdateProductDialog from './UpdateProductDialog';
 import Snackbar from 'material-ui/Snackbar';
-import RaisedButton from 'material-ui/RaisedButton';
 
 function getApiUrl( id ) {
   return 'https://api.mongolab.com/api/1/databases/products-catalogue/' +

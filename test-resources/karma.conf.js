@@ -17,11 +17,8 @@ module.exports = function ( config ) {
     webpack: webpackCfg,
     webpackServer: { noInfo: true },
     coverageReporter: {
-      dir: 'coverage/',
-      reporters: [
-        { type: 'html' },
-        { type: 'text' }
-      ]
+      dir: '../reports/coverage/',
+      reporters: [ { type: 'html' } ]
     }
   });
 };

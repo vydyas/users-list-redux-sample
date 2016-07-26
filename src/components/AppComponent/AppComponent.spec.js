@@ -2,7 +2,7 @@
 // import React from 'react/addons';
 // const TestUtils = React.addons.TestUtils;
 import createComponent from '../../../test-resources/shallowRender.helper';
-import AppComponent from './AppComponent';
+import Main from './AppComponent';
 
 describe('AppComponent', () => {
   let AppComponent;

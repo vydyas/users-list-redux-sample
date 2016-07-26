@@ -8,18 +8,16 @@ import AppBar from 'material-ui/AppBar';
 
 import  greenMuiTheme from './greenMuiTheme'
 import  ProductCardsList from '../ProductCard/ProductCardsList'
-import  productsStub from './ProductsStub'
 
 export default class extends React.Component {
   render() {
-    var products = productsStub;
     return (
       <MuiThemeProvider muiTheme={greenMuiTheme}>
         <div>
           <AppBar title="Products Catalogue" showMenuIconButton={false}/>
           <div className="products-catalogue-container">
             <h3>Hi! Here is you products list.</h3>
-            <ProductCardsList products={ products }/>
+            <ProductCardsList/>
           </div>
         </div>
       </MuiThemeProvider>

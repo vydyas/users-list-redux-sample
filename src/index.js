@@ -10,7 +10,3 @@ injectTapEventPlugin();
 
 // Render the main component into the dom
 ReactDOM.render(<AppComponent />, document.getElementById('app'));
-ReactDOM.render(
-  <AppComponent />,
-  document.getElementById('app')
-);
