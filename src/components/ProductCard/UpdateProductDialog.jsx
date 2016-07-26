@@ -36,10 +36,15 @@ export default class DialogExampleDialogDatePicker extends React.Component {
     var progressStyle = { display: this.state.updating ? 'none' : 'inline-block' };
 
     const actions = [
-      <FlatButton label="Cancel" primary={true} style={progressStyle}
+      <FlatButton label="Cancel"
+                  primary={true}
+                  style={progressStyle}
                   keyboardFocused={true}
                   onTouchTap={this.handleClose}/>,
-      <FlatButton label="Ok" primary={true} style={progressStyle}
+      <FlatButton label="Ok"
+                  className="e2e-ok-button"
+                  primary={true}
+                  style={progressStyle}
                   onTouchTap={this.handleOk}/>
     ];
 
@@ -53,7 +58,7 @@ export default class DialogExampleDialogDatePicker extends React.Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}>
-          <TextInput label="Name" value={product.name} onChange={this.changeProductProperty('name')}/>
+          <TextInput label="Name" className="e2e-name-input" value={product.name} onChange={this.changeProductProperty('name')}/>
           <TextInput label="Value" value={product.value} onChange={this.changeProductProperty('value')}/>
           <br/>
           <ProgressBar show={this.state.updating }/>

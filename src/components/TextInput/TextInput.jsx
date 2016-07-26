@@ -16,7 +16,7 @@ export default class extends React.Component {
     return (
       <div className="TextInput">
         <div className="group">
-          <input type="text" required value={this.state.value} onChange={this.change}/>
+          <input type="text" className={this.props.className} required value={this.state.value} onChange={this.change}/>
           <span className="highlight"></span>
           <span className="bar"></span>
           <label>{this.props.label}</label>

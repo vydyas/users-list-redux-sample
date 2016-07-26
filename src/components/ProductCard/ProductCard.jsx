@@ -48,7 +48,7 @@ export default class extends React.Component {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
         <CardActions style={{textAlign: 'right'}}>
-          <FlatButton label="Delete" onTouchTap={this.remove}/>
+          <FlatButton label="Delete" onTouchTap={this.remove} className={'e2e-remove-' + encodeURI(product.name)}/>
           <UpdateProductDialog onUpdate={this.updateByDialog} product={ product }>
             <RaisedButton label="Update" primary={true}/>
           </UpdateProductDialog>

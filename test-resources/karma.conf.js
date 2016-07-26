@@ -17,7 +17,7 @@ module.exports = function ( config ) {
     webpack: webpackCfg,
     webpackServer: { noInfo: true },
     coverageReporter: {
-      dir: '../coverage/',
+      dir: 'coverage/',
       reporters: [
         { type: 'html' },
         { type: 'text' }
