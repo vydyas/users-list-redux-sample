@@ -40,7 +40,7 @@ export default class extends React.Component {
 
   remove = ( product ) => {
     return axios.delete(getApiUrl(product.id)).then(this.getList).then(()=> {
-      this.setState({ tooltipMessage: 'Product removed!' });
+      this.setState({ tooltipMessage: 'Product "' + product.name +'" removed!' });
     });
   };
 
@@ -48,6 +48,8 @@ export default class extends React.Component {
     return axios.put(getApiUrl(product.id), {
       name: product.name,
       value: product.value
+    }).then(()=>{
+      this.setState({ tooltipMessage: 'Product updated to"' + product.name + '"!' });
     }).then(this.getList);
   };
 
@@ -59,7 +61,7 @@ export default class extends React.Component {
         <Snackbar
           open={!!this.state.tooltipMessage}
           message={this.state.tooltipMessage}
-          autoHideDuration={2000}
+          autoHideDuration={1500}
           className="e2e-message"
           onRequestClose={this.handleRequestClose}
         />
