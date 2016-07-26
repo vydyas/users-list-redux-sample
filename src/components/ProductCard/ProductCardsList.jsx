@@ -4,6 +4,8 @@ import axios from 'axios';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import UpdateProductDialog from './UpdateProductDialog';
+import Snackbar from 'material-ui/Snackbar';
+import RaisedButton from 'material-ui/RaisedButton';
 
 function getApiUrl( id ) {
   return 'https://api.mongolab.com/api/1/databases/products-catalogue/' +
@@ -15,9 +17,11 @@ function getApiUrl( id ) {
 export default class extends React.Component {
   constructor( props ) {
     super(props);
-    this.state = { products: [] };
+    this.state = { products: [], showRemovedMessage: false };
     this.getList();
   }
+
+  handleRequestClose = () => {this.setState({ showRemovedMessage: false });};
 
   getList = () => {
     return axios.get(getApiUrl()).then(( response ) => {
@@ -34,7 +38,9 @@ export default class extends React.Component {
   };
 
   remove = ( product ) => {
-    return axios.delete(getApiUrl(product.id)).then(this.getList);
+    return axios.delete(getApiUrl(product.id)).then(this.getList).then(()=> {
+      this.setState({ showRemovedMessage: true });
+    });
   };
 
   update = ( product ) => {
@@ -49,6 +55,12 @@ export default class extends React.Component {
 
     return (
       <div>
+        <Snackbar
+          open={this.state.showRemovedMessage}
+          message="Product removed!"
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
         <UpdateProductDialog label="Create" onUpdate={this.add} product={ {name: 'product x', value: 'product y'} }>
           <FloatingActionButton
             title="Add new product"
