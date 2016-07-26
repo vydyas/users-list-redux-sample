@@ -1,4 +1,4 @@
-@UpdateProdut
+@UpdateProduct
 Feature:
   As a user, I want to update existing product entries in my product catalogue database, so that I can ensure the database is kept up-to-date.
 
