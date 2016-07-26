@@ -4,7 +4,6 @@ require('./AppComponent.styl');
 import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 
 import  greenMuiTheme from './greenMuiTheme'
@@ -21,7 +20,6 @@ export default class extends React.Component {
           <div className="products-catalogue-container">
             <h3>Hi! Here is you products list.</h3>
             <ProductCardsList products={ products }/>
-            <RaisedButton label="Defatt" primary={true}/>
           </div>
         </div>
       </MuiThemeProvider>

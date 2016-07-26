@@ -33,6 +33,9 @@ let config = Object.assign({}, baseConfig, {
 config.module.loaders.push({
   test: /\.(js|jsx)$/,
   loader: 'babel',
+  query: {
+    presets: ['react', 'es2015']
+  },
   include: [].concat(
     config.additionalPaths,
     [ path.join(__dirname, '/../src') ]
