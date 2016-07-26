@@ -24,7 +24,7 @@ export default class DialogExampleDialogDatePicker extends React.Component {
       this.setState({ open: false, updating: false });
     });
   };
-  
+
   changeProductProperty = ( property ) => {
     return ( changeEvent ) => {
       this.state.product[ property ] = changeEvent.target.value;
@@ -45,7 +45,8 @@ export default class DialogExampleDialogDatePicker extends React.Component {
 
     var product = this.state.product;
     return (
-      <RaisedButton label={this.props.label} primary={true} onTouchTap={this.handleOpen}>
+      <span>
+        <span onTouchTap={this.handleOpen}>{this.props.children}</span>
         <Dialog
           title={'Update product with name: "' + product.name + '"'}
           actions={actions}
@@ -57,7 +58,8 @@ export default class DialogExampleDialogDatePicker extends React.Component {
           <br/>
           <ProgressBar show={this.state.updating }/>
         </Dialog>
-      </RaisedButton>
+      </span>
+
     );
   }
 }

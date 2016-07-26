@@ -2,7 +2,7 @@
   "name": "productCatalogue",
   "private": true,
   "version": "0.0.2",
-  "description": "UI of Product Catalogue project, based on ReactJS",
+  "description": "UI of Products Catalogue project, based on ReactJS",
   "scripts": {
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",

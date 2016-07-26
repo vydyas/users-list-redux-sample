@@ -3,6 +3,7 @@ import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'm
 import UpdateProductDialog from './UpdateProductDialog';
 import ProgressBar from '../ProgressBar';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class extends React.Component {
   constructor( props ) {
@@ -48,7 +49,9 @@ export default class extends React.Component {
         </CardText>
         <CardActions style={{textAlign: 'right'}}>
           <FlatButton label="Delete" onTouchTap={this.remove}/>
-          <UpdateProductDialog label="Update" onUpdate={this.updateByDialog} product={ product }/>
+          <UpdateProductDialog onUpdate={this.updateByDialog} product={ product }>
+            <RaisedButton label="Update" primary={true}/>
+          </UpdateProductDialog>
         </CardActions>
         <ProgressBar show={this.state.updating }/>
       </Card>

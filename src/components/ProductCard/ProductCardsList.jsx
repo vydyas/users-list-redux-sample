@@ -3,6 +3,7 @@ import  ProductCard from './ProductCard'
 import axios from 'axios';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import UpdateProductDialog from './UpdateProductDialog';
 
 function getApiUrl( id ) {
   return 'https://api.mongolab.com/api/1/databases/products-catalogue/' +
@@ -11,9 +12,7 @@ function getApiUrl( id ) {
     '?apiKey=PGjxbP3NQzS2xXIe8PgSbJBxVzaPlXGe';
 }
 
-
 export default class extends React.Component {
-
   constructor( props ) {
     super(props);
     this.state = { products: [] };
@@ -27,10 +26,10 @@ export default class extends React.Component {
     });
   };
 
-  add = () => {
+  add = ( product ) => {
     return axios.post(getApiUrl(), {
-      name: Math.random(),
-      value: Math.random()
+      name: product.name,
+      value: product.value
     }).then(this.getList);
   };
 
@@ -49,13 +48,15 @@ export default class extends React.Component {
     var products = this.state.products;
 
     return (
-      <div onClick={ this.getList }>
-        <FloatingActionButton
-          title="Add new product"
-          onClick={ this.add } mini={true}
-          style={{float: 'right', marginTop: '-53px'}}>
-          <ContentAdd />
-        </FloatingActionButton>
+      <div>
+        <UpdateProductDialog label="Create" onUpdate={this.add} product={ {name: 'product x', value: 'product y'} }>
+          <FloatingActionButton
+            title="Add new product"
+            mini={true}
+            style={{float: 'right', marginTop: '-53px'}}>
+            <ContentAdd />
+          </FloatingActionButton>
+        </UpdateProductDialog>
         {products.map(( product ) =>
           <ProductCard key={product.id} card={product}
                        onRemove={this.remove}

@@ -16,7 +16,7 @@ export default class extends React.Component {
     return (
       <MuiThemeProvider muiTheme={greenMuiTheme}>
         <div>
-          <AppBar title="Product Catalogue" showMenuIconButton={false}/>
+          <AppBar title="Products Catalogue" showMenuIconButton={false}/>
           <div className="products-catalogue-container">
             <h3>Hi! Here is you products list.</h3>
             <ProductCardsList products={ products }/>

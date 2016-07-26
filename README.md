@@ -1,9 +1,9 @@
-# Product Catalogue UI
+# Products Catalogue UI
 based on [generator-react-webpack V2.0](https://github.com/newtriks/generator-react-webpack)
 
 ## Task description
 ### EPIC 
-> As a user, I want to edit product entries in my product catalogue database, 
+> As a user, I want to edit product entries in my Products Catalogue database, 
 > so that I have control over what products appear on my website.
 ### Instructions
 1. Implement the project using ReactJS and running in NodeJS.
