@@ -2,7 +2,7 @@
 based on [generator-react-webpack V2.0](https://github.com/newtriks/generator-react-webpack)
 
 ## Task description
-### > EPIC 
+### EPIC 
 > As a user, I want to edit product entries in my product catalogue database, 
 > so that I have control over what products appear on my website.
 ### Instructions
