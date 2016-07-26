@@ -10,20 +10,17 @@ module.exports = function(config) {
     files: [
       'test/loadtests.js'
     ],
-    port: 8000,
+    port: 8999,
     captureTimeout: 60000,
-    frameworks: [ 'mocha', 'chai' ],
-    client: {
-      mocha: {}
-    },
+    frameworks: ['jasmine'],
     singleRun: true,
-    reporters: [ 'mocha', 'coverage' ],
+    reporters: [  'dots', 'coverage' ],
     preprocessors: {
       'test/loadtests.js': [ 'webpack', 'sourcemap' ]
     },
     webpack: webpackCfg,
     webpackServer: {
-      noInfo: true
+      noInfo: false
     },
     coverageReporter: {
       dir: 'coverage/',
