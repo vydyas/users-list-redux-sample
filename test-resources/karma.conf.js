@@ -1,23 +1,23 @@
-var webpackCfg = require('./webpack.config');
+var webpackCfg = require('./../webpack.config.js');
 
 // Set node environment to testing
 process.env.NODE_ENV = 'test';
 
 module.exports = function ( config ) {
   config.set({
-    basePath: '',
+    basePath: './',
     browsers: [ 'PhantomJS' ],
-    files: [ 'test/loadtests.js' ],
+    files: [ 'loadTests.js' ],
     port: 8999,
     captureTimeout: 60000,
     frameworks: [ 'jasmine' ],
     singleRun: true,
     reporters: [ 'dots', 'coverage' ],
-    preprocessors: { 'test/loadtests.js': [ 'webpack', 'sourcemap' ] },
+    preprocessors: { 'loadTests.js': [ 'webpack', 'sourcemap' ] },
     webpack: webpackCfg,
-    webpackServer: { noInfo: false },
+    webpackServer: { noInfo: true },
     coverageReporter: {
-      dir: 'coverage/',
+      dir: '../coverage/',
       reporters: [
         { type: 'html' },
         { type: 'text' }

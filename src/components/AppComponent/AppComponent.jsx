@@ -1,14 +1,15 @@
 require('normalize.css/normalize.css');
-require('components/AppComponent.styl');
+require('./AppComponent.styl');
+
 import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import  greenMuiTheme from 'components/greenMuiTheme'
 import AppBar from 'material-ui/AppBar';
 
-import  ProductCardsList from './ProductCard/ProductCardsList'
-import  productsStub from './productsStub'
+import  greenMuiTheme from './greenMuiTheme'
+import  ProductCardsList from '../ProductCard/ProductCardsList'
+import  productsStub from './ProductsStub'
 
 export default class extends React.Component {
   render() {

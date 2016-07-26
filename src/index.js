@@ -1,7 +1,7 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppComponent from './components/AppComponent';
+import AppComponent from './components/AppComponent/AppComponent';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap

@@ -6,8 +6,8 @@
   "scripts": {
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
-    "test": "karma start",
-    "test:watch": "karma start --autoWatch=true --singleRun=false",
+    "test": "karma start test-resources/karma.conf.js",
+    "test:watch": "karma start test-resources/karma.conf.js --autoWatch=true --singleRun=false",
     "posttest": "npm run lint",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
