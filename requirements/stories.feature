@@ -1,9 +1,6 @@
 EPIC:
 
 As a user, I want to edit product entries in my product catalogue database, so that I have control over what products appears on my website.
-
-
-
 As a user, I want to read existing product entries from my product catalogue database, so that I can review what products currently exist in the system.
 
 Given that I am passing valid <”Product Code”>
