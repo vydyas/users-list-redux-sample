@@ -1,6 +1,28 @@
 # Products Catalogue UI
 based on [generator-react-webpack V2.0](https://github.com/newtriks/generator-react-webpack)
 
+## Instruction Setup
+Before you start working with project, please install dependencies via:
+```bash
+npm install
+```
+When you are ready, you want to run "dev" server via:
+```bash
+npm server
+```
+When you are running "dev" server, you may run "integration" tests in "cucumber" format:
+```bash
+npm nightwatch
+```
+When you want to run "unit" tests please run:
+```bash
+npm test
+```
+When you want to run "unit" tests but for development purposes, please run:
+```bash
+npm test:watch
+```
+
 ## Task description
 ### EPIC 
 > As a user, I want to edit product entries in my Products Catalogue database, 
