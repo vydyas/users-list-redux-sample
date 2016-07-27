@@ -1,17 +1,16 @@
-// Uncomment the following lines to use the react test utilities
-// import React from 'react/addons';
-// const TestUtils = React.addons.TestUtils;
 import createComponent from '../../../test-resources/shallowRender.helper';
-import Main from './AppComponent';
+import AppComponent from './AppComponent';
 
 describe('AppComponent', () => {
-  let AppComponent;
+  let appComponent;
 
   beforeEach(() => {
-    AppComponent = createComponent(Main);
+    // yes I'm not mocking http call, sorry for this
+    appComponent = createComponent(AppComponent);
   });
 
-  it('should have its component name as default className', () => {
-    expect(AppComponent.props.className).not.toBe('index');
+  it('should create a component', () => {
+    expect(appComponent).toBeTruthy();
   });
 });
+
