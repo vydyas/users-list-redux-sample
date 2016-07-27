@@ -2,7 +2,7 @@ module.exports = function () {
   var randomSuffix = '-' + Date.now();
   var AJAX_FAILURE_TIMEOUT = 10000;
   this.Given(/^that I want to create product/, function () {
-    this.url('http://localhost:8000').waitForElementVisible('body', 1000);
+    this.url('http://product-catalogue.bitballoon.com/').waitForElementVisible('body', 1000);
   });
 
   this.When(/^click add button$/, function () { this.click('.e2e-add-product'); });

@@ -1,6 +1,6 @@
 # Products Catalogue UI
 based on [generator-react-webpack V2.0](https://github.com/newtriks/generator-react-webpack)
-
+see also live [demo](http://product-catalogue.bitballoon.com)
 ## Instruction Setup
 Before you start working with project, please install dependencies via:
 ```bash
@@ -21,6 +21,10 @@ npm test
 When you want to run "unit" tests but for development purposes, please run:
 ```bash
 npm test:watch
+```
+When you want to build sources to "dist" folder (minify, uglify, etc), please run:
+```bash
+npm build
 ```
 
 ## Task description
