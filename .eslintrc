@@ -20,10 +20,10 @@
     "global-strict": 0,
     "no-extra-semi": 1,
     "no-underscore-dangle": 0,
-    "no-console": 1,
-    "no-unused-vars": 1,
+    "no-console": 0,
+    "no-unused-vars": 0,
     "no-trailing-spaces": [1, {"skipBlankLines": true}],
-    "no-unreachable": 1,
+    "no-unreachable": 0,
     "no-alert": 0,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1

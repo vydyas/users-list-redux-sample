@@ -7,7 +7,7 @@ export default class extends React.Component {
     this.state = { value: props.value };
   }
 
-    change = ( event ) => {
+  change = ( event ) => {
     this.setState({ value: event.target.value });
     this.props.onChange(event);
   };

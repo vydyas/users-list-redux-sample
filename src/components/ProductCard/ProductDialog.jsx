@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextInput from '../TextInput/TextInput';
+import { ProductListStore, ProductListConstants } from '../flux/ProductListStore';
 import ProgressBar from '../ProgressBar';
 
 export default class DialogExampleDialogDatePicker extends React.Component {
@@ -9,19 +10,32 @@ export default class DialogExampleDialogDatePicker extends React.Component {
     super(props);
     this.state = {
       updating: false,
-      open: false,
+      open: props.open || false,
       product: props.product || {}
     };
   }
 
+  closePopupListener = ()=> this.setState({ open: false, updating: false })
+
+  componentDidMount() {
+    ProductListStore.on([
+      ProductListConstants.PRODUCT_ADDED,
+      ProductListConstants.PRODUCT_UPDATED
+    ], this.closePopupListener)
+  }
+
+  componentWillUnmount() {
+    ProductListStore.removeListener([
+      ProductListConstants.PRODUCT_ADDED,
+      ProductListConstants.PRODUCT_UPDATED
+    ], this.closePopupListener)
+  }
+
   handleOpen = () => {this.setState({ open: true });};
-  handleClose = () => {this.setState({ open: false });};
 
   handleOk = () => {
     this.setState({ updating: true });
-    this.props.onUpdate(this.state.product).then(() => {
-      this.setState({ open: false, updating: false });
-    });
+    this.props.onUpdate(this.state.product)
   };
 
   changeProductProperty = ( property ) => {
@@ -39,7 +53,7 @@ export default class DialogExampleDialogDatePicker extends React.Component {
                   primary={true}
                   style={progressStyle}
                   keyboardFocused={true}
-                  onTouchTap={this.handleClose}/>,
+                  onTouchTap={this.closePopupListener}/>,
       <FlatButton label="Ok"
                   className="e2e-ok-button"
                   primary={true}
@@ -56,8 +70,9 @@ export default class DialogExampleDialogDatePicker extends React.Component {
           actions={actions}
           modal={false}
           open={this.state.open}
-          onRequestClose={this.handleClose}>
-          <TextInput label="Name" className="e2e-name-input" value={product.name} onChange={this.changeProductProperty('name')}/>
+          onRequestClose={this.closePopupListener}>
+          <TextInput label="Name" className="e2e-name-input" value={product.name}
+                     onChange={this.changeProductProperty('name')}/>
           <TextInput label="Value" value={product.value} onChange={this.changeProductProperty('value')}/>
           <br/>
           <ProgressBar show={this.state.updating }/>
