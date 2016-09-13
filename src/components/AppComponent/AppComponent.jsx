@@ -9,16 +9,13 @@ import AppBar from 'material-ui/AppBar';
 import  greenMuiTheme from './greenMuiTheme'
 import  ProductCardsList from '../ProductCard/ProductCardsList'
 
-export default function () {
-  return (
-    <MuiThemeProvider muiTheme={greenMuiTheme}>
-      <div>
-        <AppBar title="Products Catalogue" showMenuIconButton={false}/>
-        <div className="products-catalogue-container">
-          <h3>Hi! Here is you products list.</h3>
-          <ProductCardsList/>
-        </div>
+export default ()=>
+  <MuiThemeProvider muiTheme={greenMuiTheme}>
+    <div>
+      <AppBar title="Products Catalogue" showMenuIconButton={false}/>
+      <div className="products-catalogue-container">
+        <h3>Hi! Here is you products list.</h3>
+        <ProductCardsList/>
       </div>
-    </MuiThemeProvider>
-  );
-}
+    </div>
+  </MuiThemeProvider>

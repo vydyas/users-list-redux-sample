@@ -19,8 +19,6 @@ export default class extends React.Component {
   }
 
   render() {
-    var products = this.state.products;
-
     return (
       <div>
         <NotificationBar/>
@@ -34,7 +32,7 @@ export default class extends React.Component {
             <ContentAdd />
           </FloatingActionButton>
         </ProductDialog>
-        {products.map(( product ) =>
+        {this.state.products.map(( product ) =>
           <ProductCard key={product._id.$oid} card={product}
                        onRemove={ProductListActions.removeProduct}
                        onUpdate={ProductListActions.updateProduct}/>

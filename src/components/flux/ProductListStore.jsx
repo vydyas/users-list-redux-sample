@@ -24,7 +24,6 @@ ProductListStore.addProductFetchedListener = function ( listener ) {
   this.on(ProductListConstants.PRODUCT_LIST_FETCHED, listener);
 };
 
-
 ProductListStore.fetchList = function () {
   return axios.get(getApiUrl()).then(( products )=> {
     this.products = products.data;
@@ -48,7 +47,6 @@ ProductListStore.updateProduct = function ( product ) {
     name: product.name,
     value: product.value
   }).then(()=> {
-    console.log('updating')
     this.emit(ProductListConstants.PRODUCT_UPDATED, product)
   });
 }
