@@ -1,6 +1,6 @@
 # Users List
 based on [generator-react-webpack V2.0](https://github.com/newtriks/generator-react-webpack)
-see also live [demo](http://users-list.bitballoon.com)
+see also live [demo](http://users-list-redux-sample.bitballoon.com)
 
 ## Instruction Setup
 Before you start working with project, please install dependencies via:
